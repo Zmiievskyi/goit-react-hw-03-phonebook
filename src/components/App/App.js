@@ -14,8 +14,10 @@ export default class App extends Component {
     this.handleLocalStorage();
   }
 
-  componentDidUpdate() {
-    localStorage.setItem('contacts', JSON.stringify(this.state.contacts));
+  componentDidUpdate(_, prevState) {
+    if (prevState.contacts !== this.state.contacts) {
+      localStorage.setItem('contacts', JSON.stringify(this.state.contacts));
+    }
   }
 
   handleLocalStorage = () => {

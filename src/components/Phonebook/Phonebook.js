@@ -5,7 +5,7 @@ import * as yup from 'yup';
 
 let schema = yup.object().shape({
   name: yup.string().min(4).max(12).required(),
-  number: yup.number().min(9).max(12).required().positive().integer(),
+  number: yup.number().required(),
 });
 
 
