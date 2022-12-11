@@ -11,7 +11,14 @@ export default class App extends Component {
   };
 
   componentDidMount() {
-    this.handleLocalStorage();
+    // this.handleLocalStorage();
+    const dataFromStorage = localStorage.getItem('contacts');
+    if (dataFromStorage !== null) {
+      const contacts = JSON.parse(dataFromStorage);
+      this.setState({ contacts: contacts });
+    } else {
+      this.setState({ contacts: [] });
+    }
   }
 
   componentDidUpdate(_, prevState) {
